@@ -16,32 +16,6 @@ $last_date = date('Y-m-d H:i', strtotime('+1 month', strtotime($current_date)));
                     <h5 class="title is-5">{{ __('Información del dueño:') }}</h5>
                     <div class="field is-horizontal">
                         <div class="field-body">
-                            <div class="field">
-                                <label class="label">{{ __('Nombre:') }}</label>
-                                <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="text" placeholder="{{ __('Nombre') }}"
-                                        value="{{ old('userName') }}"
-                                        name="userName" id="userName" maxlength="30" required>
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="field">
-                                <label class="label">{{ __('Apellidos:') }}</label>
-                                <p class="control is-expanded has-icons-left has-icons-right">
-                                    <input class="input" type="text" placeholder="{{ __('Apellidos') }}"
-                                        name="userLastName" id="userLastName" maxlength="30" required>
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field is-horizontal">
-                        <div class="field-body">
                             <div class="field ">
                                 <label class="label">{{ __('Número de documento:') }}</label>
                                 <p class="control is-expanded has-icons-left">
@@ -65,6 +39,32 @@ $last_date = date('Y-m-d H:i', strtotime('+1 month', strtotime($current_date)));
                                             name="userCelNumber" id="userCelNumber" maxlength="30" required>
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <label class="label">{{ __('Nombre:') }}</label>
+                                <p class="control is-expanded has-icons-left">
+                                    <input class="input" type="text" placeholder="{{ __('Nombre') }}"
+                                        value="{{ old('userName') }}" name="userName" id="userName" maxlength="30"
+                                        required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field">
+                                <label class="label">{{ __('Apellidos:') }}</label>
+                                <p class="control is-expanded has-icons-left has-icons-right">
+                                    <input class="input" type="text" placeholder="{{ __('Apellidos') }}"
+                                        name="userLastName" id="userLastName" maxlength="30" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </p>
                             </div>
                         </div>
                     </div>
