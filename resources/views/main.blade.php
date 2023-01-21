@@ -27,6 +27,7 @@
         </main>
     </section>
     <script type="text/javascript" src="js/help.js"></script>
+    <script type="text/javascript" src="js/modal-bulma.js"></script>
 </body>
 
 </html>
