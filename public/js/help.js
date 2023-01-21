@@ -1,27 +1,33 @@
-function updateAppointment(id, cc, name, last_name, pet_name, date, status, url) {
-    document.getElementById("updateUserId").value = cc;
+function updateReservation(id, cc, name, last_name, tel_user, pet_name, date, status, url) {
+    document.getElementById("updateUserDNI").value = cc;
     document.getElementById("updateUserName").value = name;
     document.getElementById("updateUserLastName").value = last_name;
+    document.getElementById("updateUserCelNumber").value = tel_user;
     document.getElementById("updateUserPetName").value = pet_name;
-    document.getElementById("updateMeetingTime").value = date;
+    document.getElementById("updateReservationDate").value = date;
+    document.getElementById("updateReservationDate").min = date;
 
     if (status == 0) {
-      document.getElementById("updateState").checked = false;
+      document.getElementById("updateReservationStatus").value = 0;
+    } else if(status == 1) {
+      document.getElementById("updateReservationStatus").value = 1;
     } else {
-      document.getElementById("updateState").checked = true;
+      document.getElementById("updateReservationStatus").value = 2;
     }
 
     document.getElementById("updateForm").action = url+"/"+id;
 }
 
-function deleteAppointment(id, cc, name, date, url) {
-  document.getElementById("deleteAppointmentID").value = cc;
-  document.getElementById("deleteAppointmentName").value = name;
-  document.getElementById("deleteAppointmentDate").value = date;
+function deleteReservation(id, cc, name, last_name, tel, date, url) {
+  document.getElementById("deleteUserDNI").value = cc;
+  document.getElementById("deleteUserCelNumber").value = tel;
+  document.getElementById("deleteUserName").value = name;
+  document.getElementById("deleteUserLastName").value = last_name;
+  document.getElementById("deleteReservationDate").value = date;
   document.getElementById("deleteForm").action = url+"/"+id;
 }
 
-function updateAppointmentDataCheck(params) {
+function updateReservationDataCheck(params) {
     
 }
 

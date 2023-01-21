@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class ReservationListController extends Controller
 {
@@ -14,10 +16,14 @@ class ReservationListController extends Controller
      */
     public function index()
     {
-        
-        return view('pages.reservation-list', [
-            'reservations' => DB::table('reservations')->simplePaginate(5),
-        ]);
+        try {
+            return view('pages.reservation-list', [
+                'reservations' => DB::table('reservations')->simplePaginate(5),
+            ]);
+        } catch (\Throwable $th) {
+            toastr('¡Hubo algun error con la base de datos!', 'error');
+            return redirect('/');
+        }
     }
 
     /**
@@ -60,7 +66,11 @@ class ReservationListController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $reser_ = Reservation::findOrFail($id);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -72,7 +82,66 @@ class ReservationListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // error_log($id);
+        try {
+            //Validates user inputs
+            $request->validate([
+                'updateUserDNI' => 'required|string|max:10',
+                'updateUserName' => 'required|string|max:30',
+                'updateUserLastName' => 'required|string|max:30',
+                'updateUserCelNumber' => 'required|string|max:30',
+                'updateUserPetName' => 'required|string|max:30',
+                'updateReservationDate' => 'required|date_format:Y-m-d\TH:i',
+                'updateReservationStatus' => ['required', Rule::in(['0', '1', '2'])],
+            ]);
+
+            //DB query
+            $query = Reservation::find($id);
+            $query->user_dni = $request->updateUserDNI;
+            $query->name = $request->updateUserName;
+            $query->last_name = $request->updateUserLastName;
+            $query->tel_user = $request->updateUserCelNumber;
+            $query->pet_name = $request->updateUserPetName;
+
+            //Checking datetime
+            $current_date_time = strtotime(date($query->res_date)); //get date from data base
+            $request_date_time = strtotime(date($request->updateReservationDate)); //get date from request (user input)
+            $check_date =  strtotime(date('Y-m-d H:i', strtotime('-2 hour', $current_date_time))); //Two hours left for date time?
+            $current_time = strtotime(date('Y-m-d H:i')); //current datetime
+
+            //checking if there is two hours left for the date
+            if ($current_time > $check_date) {
+                toastr('¡No se puede actualizar los datos con menos de dos horas para la cita!', 'warning');
+                return redirect('reservation-list');
+            }
+
+            //User changed reservation date?
+            if ($current_date_time != $request_date_time) {
+                //check if there is a reservation with that date
+                if ($this->checkAppointmentDate($request->updateReservationDate) == false) {
+                    toastr('¡Hora no disponible, por favor ingrese otra fecha para la cita!', 'warning');
+                    return redirect('reservation-list');
+                }
+            }
+
+            $query->res_date = $request->updateReservationDate;
+
+            //Check status from input
+            if ($request->updateReservationStatus == 0) {
+                $query->status = 0;
+            } else if ($request->updateReservationStatus == 1) {
+                $query->status = 1;
+            } else {
+                $query->status = 2;
+            }
+
+            $query->update();
+            toastr('¡Cita actualizada con exito!');
+            return redirect('reservation-list');
+        } catch (\Throwable $th) {
+            toastr('¡Hubo un error interno al actualizar!', 'error');
+            return redirect('reservation-list');
+        }
     }
 
     /**
@@ -83,6 +152,33 @@ class ReservationListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            //searching for reservation on DB
+            $query = Reservation::find($id);
+            $query->delete();
+            toastr('¡Cita eliminada con exito!');
+            return redirect('reservation-list');
+        } catch (\Throwable $th) {
+            toastr('¡Hubo un error interno al eliminar!', 'error');
+            return redirect('reservation-list');
+        }
+    }
+
+    private static function checkAppointmentDate($date)
+    {
+        try {
+            //date with format
+            $format_date = date('Y-m-d H:i', strtotime($date));
+            //searching datetime in DB
+            $consulta = Reservation::where('res_date', '=', $format_date);
+
+            //Found something?
+            if ($consulta->count() > 0) {
+                return false;
+            }
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 }
