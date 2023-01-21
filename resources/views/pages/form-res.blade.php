@@ -4,7 +4,7 @@
     </div>
 
     <div class="container mt-6">
-        <form action="" method="post">
+        <form action="{{ url('reservation') }}" method="POST">
 
             <h2 class="title is-3 has-text-centered is-uppercase mb-6">{{ __('Reservar un cita veterinaria') }}</h2>
             <div class="px-6">
@@ -91,8 +91,7 @@
                             <div class="field">
                                 <label class="label">{{ __('Fecha y hora:') }}</label>
                                 <p class="control is-expanded">
-                                    <input class="input mr-6" type="datetime-local" 
-                                        name="res_date" id="res_Date">
+                                    <input class="input mr-6" type="datetime-local" name="res_date" id="res_Date">
                                 </p>
                             </div>
                             <div class="field"></div>
@@ -101,11 +100,11 @@
                 </div>
 
                 <div class="field is-horizontal my-6">
-                    
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <button class="button is-primary">
+                                @csrf
+                                <button class="button is-primary" type="submit">
                                     {{ __('Reservar') }}
                                 </button>
                             </div>

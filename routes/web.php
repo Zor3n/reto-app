@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('reservation', [FormReservationController::class, 'GetIndex']);
+Route::get('reservation', [FormReservationController::class, 'GetIndex'])->name('reservation');
+Route::post('reservation', [FormReservationController::class, 'SendForm']);

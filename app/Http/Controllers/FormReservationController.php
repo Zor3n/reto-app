@@ -10,4 +10,16 @@ class FormReservationController extends Controller
     {
         return view('pages.form-res');
     }
+
+    public function SendForm(Request $request)
+    {
+        try {
+            toastr('Oops! Something went wrong!', 'info');
+            return redirect('reservation');
+        } catch (\Throwable $th) {
+            //throw $th;
+            toastr()->error('Oops! Something went wrong!');
+            return redirect('reservation');
+        }
+    }
 }
