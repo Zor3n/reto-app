@@ -19,7 +19,7 @@
                     <a class="navbar-item" href="{{ url('/reservation')}}">
                         {{ __('Reservar') }}
                     </a>
-                    <a class="navbar-item" href="{{ url('/')}}">
+                    <a class="navbar-item" href="{{ url('/reservation-list')}}">
                         {{ __('Reservas') }}
                     </a>
                     <a class="navbar-item" href="{{ url('/')}}">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FormReservationController;
+use App\Http\Controllers\ReservationListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 
 Route::get('reservation', [FormReservationController::class, 'GetIndex'])->name('reservation');
 Route::post('reservation', [FormReservationController::class, 'SendForm']);
+
+Route::resource('reservation-list', ReservationListController::class);
