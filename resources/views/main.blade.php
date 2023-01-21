@@ -17,6 +17,7 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+    <script type="text/javascript" src='js/fullcalendar/dist/index.global.js'></script>
 </head>
 
 <body>
@@ -25,6 +26,7 @@
             {{ $slot }}
         </main>
     </section>
+    <script type="text/javascript" src="js/help.js"></script>
 </body>
 
 </html>
