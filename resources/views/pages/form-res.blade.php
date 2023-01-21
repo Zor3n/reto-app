@@ -1,3 +1,7 @@
+<?php
+$current_date = date('Y-m-d H:i', strtotime('+1 day'));
+$last_date = date('Y-m-d H:i', strtotime('+1 month', strtotime($current_date)));
+?>
 <x-main>
     <div>
         @include('components.navbar')
@@ -16,7 +20,8 @@
                                 <label class="label">{{ __('Nombre:') }}</label>
                                 <p class="control is-expanded has-icons-left">
                                     <input class="input" type="text" placeholder="{{ __('Nombre') }}"
-                                        name="name" id="name">
+                                        value="{{ old('userName') }}"
+                                        name="userName" id="userName" maxlength="30" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -26,7 +31,7 @@
                                 <label class="label">{{ __('Apellidos:') }}</label>
                                 <p class="control is-expanded has-icons-left has-icons-right">
                                     <input class="input" type="text" placeholder="{{ __('Apellidos') }}"
-                                        name="last_name" id="last_name">
+                                        name="userLastName" id="userLastName" maxlength="30" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -41,7 +46,7 @@
                                 <label class="label">{{ __('Número de documento:') }}</label>
                                 <p class="control is-expanded has-icons-left">
                                     <input class="input" type="text" placeholder="{{ __('DNI') }}"
-                                        name="dni" id="dni">
+                                        name="userDNI" id="userDNI" maxlength="10" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -57,7 +62,7 @@
                                     </p>
                                     <p class="control is-expanded">
                                         <input class="input" type="tel" placeholder="{{ __('Celular') }}"
-                                            name="cel_number" id="cel_number">
+                                            name="userCelNumber" id="userCelNumber" maxlength="30" required>
                                     </p>
                                 </div>
                             </div>
@@ -73,7 +78,7 @@
                                 <label class="label">{{ __('Nombre:') }}</label>
                                 <p class="control is-expanded has-icons-left">
                                     <input class="input" type="text" placeholder="{{ __('Nombre') }}"
-                                        name="pet_name" id="pet_name">
+                                        name="userPetName" id="userPetName" maxlength="30" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -91,7 +96,8 @@
                             <div class="field">
                                 <label class="label">{{ __('Fecha y hora:') }}</label>
                                 <p class="control is-expanded">
-                                    <input class="input mr-6" type="datetime-local" name="res_date" id="res_Date">
+                                    <input class="input mr-6" type="datetime-local" value="{{ $current_date }}"
+                                        min="{{ $current_date }}" name="reservationDate" id="reservationDate" required>
                                 </p>
                             </div>
                             <div class="field"></div>
