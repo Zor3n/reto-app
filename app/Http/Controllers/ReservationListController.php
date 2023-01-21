@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReservationListController extends Controller
 {
@@ -13,7 +14,10 @@ class ReservationListController extends Controller
      */
     public function index()
     {
-        return view('pages.reservation-list');
+        
+        return view('pages.reservation-list', [
+            'reservations' => DB::table('reservations')->simplePaginate(5),
+        ]);
     }
 
     /**
