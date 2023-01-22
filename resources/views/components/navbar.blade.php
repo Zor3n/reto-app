@@ -27,7 +27,7 @@
                         {{ __('Calendario') }}
                     </a>
                     <span class="navbar-item">
-                        <a class="button is-primary is-inverted has-background-dark" href="{{ url('/')}}">
+                        <a class="button is-primary is-inverted has-background-dark" target="_blank" href="https://github.com/Zor3n/reto-app">
                             <span class="icon">
                                 <i class="fab fa-github"></i>
                             </span>

@@ -34,7 +34,7 @@
                                     {{ __('Calendario') }}
                                 </a>
                                 <span class="navbar-item">
-                                    <a class="button is-success is-inverted" href="{{ url('/') }}">
+                                    <a class="button is-success is-inverted" target="_blank" href="https://github.com/Zor3n/reto-app">
                                         <span class="icon">
                                             <i class="fab fa-github"></i>
                                         </span>
