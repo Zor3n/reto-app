@@ -132,6 +132,7 @@ class ReservationListController extends Controller
             $request_date_time = strtotime(date($request->updateReservationDate)); //get date from request (user input)
             $check_date =  strtotime(date('Y-m-d H:i', strtotime('-2 hour', $current_date_time))); //Two hours left for date time?
             $current_time = strtotime(date('Y-m-d H:i')); //current datetime
+            $minimum_margin_time =strtotime(date('Y-m-d H:i', strtotime('+1 day')));
 
             //checking if there is two hours left for the date
             if ($current_time > $check_date) {
@@ -141,6 +142,12 @@ class ReservationListController extends Controller
 
             //User changed reservation date?
             if ($current_date_time != $request_date_time) {
+                
+                if ($request_date_time < $minimum_margin_time) {
+                    toastr('¡Por favor, ponga una fecha valida!', 'warning');
+                    return redirect('reservation-list');
+                }
+
                 //check if there is a reservation with that date
                 if ($this->checkAppointmentDate($request->updateReservationDate) == false) {
                     toastr('¡Hora no disponible, por favor ingrese otra fecha para la cita!', 'warning');

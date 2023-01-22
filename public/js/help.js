@@ -5,7 +5,6 @@ function updateReservation(id, cc, name, last_name, tel_user, pet_name, date, st
     document.getElementById("updateUserCelNumber").value = tel_user;
     document.getElementById("updateUserPetName").value = pet_name;
     document.getElementById("updateReservationDate").value = date;
-    document.getElementById("updateReservationDate").min = date;
 
     if (status == 0) {
       document.getElementById("updateReservationStatus").value = 0;

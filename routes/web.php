@@ -28,3 +28,5 @@ Route::get('/search', [ReservationListController::class, 'SearchData']);
 
 
 Route::get('calendar', [CalendarController::class, 'StartCalendar'])->name('calendar');
+Route::put('calendar/{id}', [CalendarController::class, 'UpdateReservationFromCalendar'])
+    ->where('id', '[0-9]+');

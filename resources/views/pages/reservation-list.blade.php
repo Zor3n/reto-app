@@ -1,5 +1,6 @@
 <?php
 $current_date_search = date('Y-m-d');
+$minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
 ?>
 <x-main>
     <div>
@@ -199,7 +200,8 @@ $current_date_search = date('Y-m-d');
                                         <label class="label">{{ __('Fecha y hora:') }}</label>
                                         <p class="control is-expanded">
                                             <input class="input mr-6" type="datetime-local"
-                                                name="updateReservationDate" id="updateReservationDate" required>
+                                                min="{{ $minimum_datetime }}" name="updateReservationDate"
+                                                id="updateReservationDate" required>
                                         </p>
                                     </div>
                                     <div class="field">
