@@ -22,7 +22,7 @@ $last_date = date('Y-m-d H:i', strtotime('+1 month', strtotime($current_date)));
                                     <input class="input" type="text" placeholder="{{ __('DNI') }}"
                                         name="userDNI" id="userDNI" maxlength="10" required>
                                     <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
+                                        <i class="fas fa-solid fa-id-card"></i>
                                     </span>
                                 </p>
                             </div>
@@ -80,7 +80,7 @@ $last_date = date('Y-m-d H:i', strtotime('+1 month', strtotime($current_date)));
                                     <input class="input" type="text" placeholder="{{ __('Nombre') }}"
                                         name="userPetName" id="userPetName" maxlength="30" required>
                                     <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
+                                        <i class="fas fa-solid fa-paw"></i>
                                     </span>
                                 </p>
                             </div>

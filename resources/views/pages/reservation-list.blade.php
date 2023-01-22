@@ -122,7 +122,7 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
                                             <input class="input" type="text" placeholder="{{ __('DNI') }}"
                                                 name="updateUserDNI" id="updateUserDNI" maxlength="10" required>
                                             <span class="icon is-small is-left">
-                                                <i class="fas fa-user"></i>
+                                                <i class="fas fa-solid fa-id-card"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -182,7 +182,7 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
                                                 name="updateUserPetName" id="updateUserPetName" maxlength="30"
                                                 required>
                                             <span class="icon is-small is-left">
-                                                <i class="fas fa-user"></i>
+                                                <i class="fas fa-solid fa-paw"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -248,7 +248,7 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
                                                 name="deleteUserDNI" id="deleteUserDNI" maxlength="10" readonly
                                                 disabled required>
                                             <span class="icon is-small is-left">
-                                                <i class="fas fa-user"></i>
+                                                <i class="fas fa-solid fa-id-card"></i>
                                             </span>
                                         </p>
                                     </div>
