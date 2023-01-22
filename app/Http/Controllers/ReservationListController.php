@@ -14,17 +14,40 @@ class ReservationListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
+            //Return view with reservations
             return view('pages.reservation-list', [
-                'reservations' => DB::table('reservations')->simplePaginate(5),
+                'reservations' => DB::table('reservations')->simplePaginate(7),
             ]);
         } catch (\Throwable $th) {
             toastr('¡Hubo algun error con la base de datos!', 'error');
             return redirect('/');
         }
     }
+
+    public function SearchData(Request $request)
+    {
+        try {
+            //validating the required format
+            $request->validate([
+                'searchDate' => 'required|date_format:Y-m-d',
+            ]);
+            //changing to the required format
+            $date_to_search = date('Y-m-d', strtotime($request->searchDate));
+            
+            //returning all the dates with the parameter
+            return view('pages.reservation-list', [
+                'reservations' => DB::table('reservations')
+                    ->where('res_date', 'like', '%' . $date_to_search . '%')->get(),
+            ]);
+        } catch (\Throwable $th) {
+            toastr('¡Hubo un error interno al buscar!', 'error');
+            return redirect('reservation-list');
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -67,6 +90,7 @@ class ReservationListController extends Controller
     public function edit($id)
     {
         try {
+            //validating if the reservation exist
             $reser_ = Reservation::findOrFail($id);
         } catch (\Throwable $th) {
             throw $th;

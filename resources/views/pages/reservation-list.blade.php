@@ -1,3 +1,6 @@
+<?php
+$current_date_search = date('Y-m-d');
+?>
 <x-main>
     <div>
         @include('components.navbar')
@@ -6,6 +9,28 @@
     <div class="container mt-6">
         <h2 class="title is-3 has-text-centered is-uppercase mb-6">{{ __('Reservas') }}</h2>
         <div class="table-container">
+            <div class="is-flex is-justify-content-end mx-6 mb-5">
+                <div class="field is-horizontal ">
+                    <div class="field-body">
+                        <form class="is-flex" role="search" action="{{ url('search') }}" method="GET">
+                            <div class="field">
+                                <p class="control is-expanded">
+                                    <input class="input mr-6" type="date" value="{{ $current_date_search }}"
+                                        name="searchDate" id="searchDate" required>
+                                </p>
+                            </div>
+                            <div class="fieldf mx-5">
+                                @csrf
+                                <button class="button is-info" type="submit">{{ __('Buscar') }}</button>
+                                <a class="button is-success" href="{{ url('/reservation-list') }}">
+                                    {{ __('Reiniciar') }}
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
             <table class="table is-striped is-hoverable is-fullwidth">
                 <thead>
                     <tr>
@@ -79,7 +104,7 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Actualizar</p>
+                <p class="modal-card-title">{{ __('Actualizar') }}</p>
                 <button class="delete" aria-label="close" type="button"></button>
             </header>
             <section class="modal-card-body">
@@ -154,7 +179,8 @@
                                         <label class="label">{{ __('Nombre:') }}</label>
                                         <p class="control is-expanded has-icons-left">
                                             <input class="input" type="text" placeholder="{{ __('Nombre') }}"
-                                                name="updateUserPetName" id="updateUserPetName" maxlength="30" required>
+                                                name="updateUserPetName" id="updateUserPetName" maxlength="30"
+                                                required>
                                             <span class="icon is-small is-left">
                                                 <i class="fas fa-user"></i>
                                             </span>

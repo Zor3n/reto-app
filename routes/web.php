@@ -23,3 +23,4 @@ Route::get('reservation', [FormReservationController::class, 'GetIndex'])->name(
 Route::post('reservation', [FormReservationController::class, 'SendForm']);
 
 Route::resource('reservation-list', ReservationListController::class);
+Route::get('/search', [ReservationListController::class, 'SearchData']);
