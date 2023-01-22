@@ -20,6 +20,7 @@ class CalendarController extends Controller
             //Empty array for changing requested data to and array for Full Calendar
             $calendar_data = [];
 
+            //Formating data for Full Calendar readable array
             foreach ($data as $value) {
                 $status_value = $value->status;
                 $event_color = 'blue';

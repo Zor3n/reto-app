@@ -100,7 +100,6 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
         </div>
     </div>
 
-
     <div id="modal-update" class="modal">
         <div class="modal-background"></div>
         <div class="modal-card">

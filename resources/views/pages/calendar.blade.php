@@ -37,8 +37,7 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
                     .pet_name;
                 document.getElementById('updateReservationDate').value = info.event.extendedProps
                     .date_app;
-                // document.getElementById('updateReservationDate').min = info.event.extendedProps
-                //     .date_app;
+                    
                 document.getElementById('updateReservationStatus').value = info.event.extendedProps
                     .status;
 
