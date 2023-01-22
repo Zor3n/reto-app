@@ -22,7 +22,7 @@
                     <a class="navbar-item" href="{{ url('/reservation-list')}}">
                         {{ __('Reservas') }}
                     </a>
-                    <a class="navbar-item" href="{{ url('/')}}">
+                    <a class="navbar-item" href="{{ url('/calendar')}}">
                         {{ __('Calendario') }}
                     </a>
                     <span class="navbar-item">

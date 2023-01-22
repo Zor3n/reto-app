@@ -29,7 +29,7 @@
                             <a class="navbar-item" href="{{ url('/reservation-list')}}">
                                 {{ __('Reservas') }}
                             </a>
-                            <a class="navbar-item" href="{{ url('/')}}">
+                            <a class="navbar-item" href="{{ url('/calendar')}}">
                                 {{ __('Calendario') }}
                             </a>
                             <span class="navbar-item">
@@ -58,7 +58,7 @@
                 <div class="buttons is-justify-content-center mt-6">
                     <a class="button px-6 mx-5 is-link" href="{{ url('/reservation')}}">{{__('Reservar')}}</a>
                     <a class="button px-6 mx-5 is-info" href="{{ url('/reservation-list')}}">{{__('Todas las Reservas')}}</a>
-                    <a class="button px-6 mx-5 is-link" href="{{ url('/reservation')}}">{{__('Calendario')}}</a>
+                    <a class="button px-6 mx-5 is-link" href="{{ url('/calendar')}}">{{__('Calendario')}}</a>
                 </div>
             </div>
         </div>
