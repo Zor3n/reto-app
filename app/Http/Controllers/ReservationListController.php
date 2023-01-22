@@ -36,12 +36,20 @@ class ReservationListController extends Controller
             ]);
             //changing to the required format
             $date_to_search = date('Y-m-d', strtotime($request->searchDate));
-            
+
             //returning all the dates with the parameter
-            return view('pages.reservation-list', [
-                'reservations' => DB::table('reservations')
-                    ->where('res_date', 'like', '%' . $date_to_search . '%')->get(),
-            ]);
+            $reservations = DB::table('reservations')
+                ->where('res_date', 'like', '%' . $date_to_search . '%')
+                ->get();
+
+            //Found results?
+            if ($reservations->count() > 0) {
+                return view('pages.reservation-list', ['reservations' => $reservations]);
+            } else {
+                toastr('¡No se encontraron reservas en la fecha ingresada!', 'info');
+                return redirect('reservation-list');
+            }
+
         } catch (\Throwable $th) {
             toastr('¡Hubo un error interno al buscar!', 'error');
             return redirect('reservation-list');
@@ -132,7 +140,7 @@ class ReservationListController extends Controller
             $request_date_time = strtotime(date($request->updateReservationDate)); //get date from request (user input)
             $check_date =  strtotime(date('Y-m-d H:i', strtotime('-2 hour', $current_date_time))); //Two hours left for date time?
             $current_time = strtotime(date('Y-m-d H:i')); //current datetime
-            $minimum_margin_time =strtotime(date('Y-m-d H:i', strtotime('+1 day')));
+            $minimum_margin_time = strtotime(date('Y-m-d H:i', strtotime('+1 day')));
 
             //checking if there is two hours left for the date
             if ($current_time > $check_date) {
@@ -142,7 +150,7 @@ class ReservationListController extends Controller
 
             //User changed reservation date?
             if ($current_date_time != $request_date_time) {
-                
+
                 if ($request_date_time < $minimum_margin_time) {
                     toastr('¡Por favor, ponga una fecha valida!', 'warning');
                     return redirect('reservation-list');
