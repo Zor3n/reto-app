@@ -66,7 +66,7 @@ class CalendarController extends Controller
                 'updateUserDNI' => 'required|string|max:10',
                 'updateUserName' => 'required|string|max:30',
                 'updateUserLastName' => 'required|string|max:30',
-                'updateUserCelNumber' => 'required|string|max:30',
+                'updateUserCelNumber' => 'required|string|max:10',
                 'updateUserPetName' => 'required|string|max:30',
                 'updateReservationDate' => 'required|date_format:Y-m-d\TH:i',
                 'updateReservationStatus' => ['required', Rule::in(['0', '1', '2'])],

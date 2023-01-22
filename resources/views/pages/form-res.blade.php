@@ -36,7 +36,7 @@ $last_date = date('Y-m-d H:i', strtotime('+1 month', strtotime($current_date)));
                                     </p>
                                     <p class="control is-expanded">
                                         <input class="input" type="tel" placeholder="{{ __('Celular') }}"
-                                            name="userCelNumber" id="userCelNumber" maxlength="30" required>
+                                            name="userCelNumber" id="userCelNumber" maxlength="10" required>
                                     </p>
                                 </div>
                             </div>

@@ -263,7 +263,7 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
                                             <p class="control is-expanded">
                                                 <input class="input" type="tel"
                                                     placeholder="{{ __('Celular') }}" name="deleteUserCelNumber"
-                                                    id="deleteUserCelNumber" maxlength="30" readonly disabled
+                                                    id="deleteUserCelNumber" maxlength="10" readonly disabled
                                                     required>
                                             </p>
                                         </div>

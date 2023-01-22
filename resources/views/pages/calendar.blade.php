@@ -95,7 +95,7 @@ $minimum_datetime = date('Y-m-d H:i', strtotime('+1 day'));
                                             </p>
                                             <p class="control is-expanded">
                                                 <input class="input" type="tel" placeholder="{{ __('Celular') }}"
-                                                    name="updateUserCelNumber" id="updateUserCelNumber" maxlength="30"
+                                                    name="updateUserCelNumber" id="updateUserCelNumber" maxlength="10"
                                                     required>
                                             </p>
                                         </div>
