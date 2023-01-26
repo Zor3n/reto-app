@@ -29,6 +29,7 @@
     <script type="text/javascript" src="js/help.js"></script>
     <script type="text/javascript" src="js/modal-bulma.js"></script>
     <script type="text/javascript" src="js/bootstrap-js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/bulma-js/dist/bulma.js"></script>
 </body>
 
 </html>
